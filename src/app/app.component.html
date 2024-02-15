@@ -1,17 +1,21 @@
-<div>
-    <!-- <h2 *ngFor="let item of items">{{item.wishText}}</h2> -->
     <div class="container">
-      <ul class="wish-list" *ngFor="let item of items">
-        <li >
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-            <label class="form-check-label" for="flexCheckChecked">
-              {{item.wishText}}
-            </label>
-          </div>
-        </li>
-      </ul>
+
+      <div *ngIf="items.length === 0; else showItems">There are no wishes</div>
+
+      <ng-template #showItems>
+        <ul class="wish-list">
+          <li *ngFor="let item of items; index as i">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [checked]="item.isDone" [attr.data-index]="i">
+              <label class="form-check-label" for="flexCheckChecked">
+                {{item.wishText}}
+              </label>
+            </div>
+          </li>
+        </ul>
+      </ng-template>
+      
         
     </div>
     
-</div>
+
