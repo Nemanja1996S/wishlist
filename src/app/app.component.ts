@@ -4,6 +4,10 @@ import { wishItem } from '../shared/models/wishItem';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+const filters = [
+  (item : wishItem) => item,
+  (item : wishItem) => item.isDone,
+  (item : wishItem) => !item.isDone]
 
 @Component({
   selector: 'app-root',
@@ -21,7 +25,15 @@ export class AppComponent {
     new wishItem('Get a developer job')
   ]
 
+ 
+
   newWishText = "";
+
+  filteredValue : string = '0';
+
+  get visibleItems() : any {
+    return this.items.filter(filters[parseInt(this.filteredValue)])
+  }
 
   toggleItem(item: wishItem){
     item.isDone = !item.isDone;
