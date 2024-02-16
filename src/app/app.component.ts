@@ -5,21 +5,18 @@ import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
+import { WishFilterComponent } from './wish-filter/wish-filter.component';
 
-const filters = [
-  (item : wishItem) => item,
-  (item : wishItem) => item.isDone,
-  (item : wishItem) => !item.isDone]
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, NgIf, FormsModule, WishListComponent, AddWishFormComponent],
+  imports: [RouterOutlet, NgFor, NgIf, FormsModule, WishListComponent, AddWishFormComponent, WishFilterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'My wishlist';
   items : wishItem[] = [
     new wishItem('Learn Angular'),
     new wishItem('Get a student intership'),
@@ -27,13 +24,7 @@ export class AppComponent {
     new wishItem('Get a developer job')
   ]
 
- 
+  filterApp : any = () => {};
 
-
-  filteredValue : string = '0';
-
-  get visibleItems() : any {
-    return this.items.filter(filters[parseInt(this.filteredValue)])
-  }
 
 }

@@ -3,13 +3,11 @@
       <add-wish-form
       (addWish)="items.push($event)"
       ></add-wish-form>
-      <select class="form-select" [(ngModel)]="filteredValue" >
-        <option value="0">All</option>
-        <option value="1">Fulfiled</option>
-        <option value="2">Unfulfiled</option>
-      </select>
+      <wish-filter
+      [(filter)]="filterApp"
+      ></wish-filter>
       <wish-list
-      [wishes]="visibleItems">
+      [wishes]="items.filter(filterApp)">
         </wish-list>
     </div>
     
