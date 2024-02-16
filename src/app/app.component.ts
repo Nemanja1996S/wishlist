@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { wishItem } from '../shared/models/wishItem';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 
 const filters = [
   (item : wishItem) => item,
@@ -12,7 +14,7 @@ const filters = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, NgIf, FormsModule],
+  imports: [RouterOutlet, NgFor, NgIf, FormsModule, WishListComponent, AddWishFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -27,7 +29,6 @@ export class AppComponent {
 
  
 
-  newWishText = "";
 
   filteredValue : string = '0';
 
@@ -35,13 +36,4 @@ export class AppComponent {
     return this.items.filter(filters[parseInt(this.filteredValue)])
   }
 
-  toggleItem(item: wishItem){
-    item.isDone = !item.isDone;
-    console.log(item);
-  }
-
-  addNewWish(){
-    this.items.push(new wishItem(this.newWishText, false));
-    this.newWishText = "";
-  }
 }
