@@ -1,9 +1,11 @@
 <li>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" [checked]="fulfilled" (click)="toggleFulfilled()">
+      <input class="form-check-input" type="checkbox" value="" [checked]="wish.isDone" (click)="toggleFulfilled()">
       <label class="form-check-label" [ngClass]="cssClasses"  >
-        {{wishText}}
+        {{wish.wishText}}
       </label>
+      <button type="button" class="btn-close" (click)="removeWish()" ></button>
     </div>
+    
 
   </li>

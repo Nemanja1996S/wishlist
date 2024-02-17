@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish-filter/wish-filter.component';
+import events from '../shared/services/EventService'
 
 
 
@@ -23,6 +24,15 @@ export class AppComponent {
     new wishItem('Come up with topic for final thesis', true),
     new wishItem('Get a developer job')
   ]
+
+  constructor(){
+    events.listenFromService('removeWishEvent', (wish : wishItem) => {
+      //remove wish from wishes
+      let index : number = this.items.indexOf(wish);
+      this.items.splice(index, 1);
+      //console.log(wish);
+    })
+  }
 
   filterApp : any = () => {};
 

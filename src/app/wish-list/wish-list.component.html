@@ -4,8 +4,8 @@
         <ul class="wish-list">
           <wish-list-item
             *ngFor="let wish of wishes"
-            [wishText]="wish.wishText"
-            [(fulfilled)]="wish.isDone"
+            [wish]="wish"
+
           ></wish-list-item>
         </ul>
       </ng-template>
