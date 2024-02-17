@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import events from '../../shared/services/EventService'
 import { wishItem } from '../../shared/models/wishItem';
+import { EventService } from '../../shared/services/EventService';
 
 @Component({
   selector: 'wish-list-item',
@@ -14,7 +14,9 @@ export class WishListItemComponent {
 
   @Input() wish!: wishItem;
 
+  constructor(private events:EventService){
 
+  }
   get cssClasses() : any {
     //return this.fulfilled? ['strikeout', 'text-muted']: [];
 
@@ -26,6 +28,6 @@ export class WishListItemComponent {
   }
 
   removeWish() : any {
-    events.emitFromService('removeWishEvent', this.wish);
+    this.events.emitFromService('removeWishEvent', this.wish);
   }
 }

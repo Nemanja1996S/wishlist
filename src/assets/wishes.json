@@ -1,0 +1,7 @@
+[
+    { "wishText": "Learn Angular!", "isDone": false },
+    { "wishText": "'Get a student intership'", "isDone": false },
+    { "wishText": "Come up with topic for final thesis", "isDone": true },
+    { "wishText": "Get a developer job", "isDone": false }
+
+]

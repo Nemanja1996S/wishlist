@@ -1,6 +1,11 @@
+import { ApplicationModule, Injectable } from "@angular/core";
 import {Observable, Subject } from "rxjs";
+import { AppComponent } from "../../app/app.component";
 
-class EventService {
+@Injectable({
+    providedIn: 'root'
+})
+export class EventService {
 	private subject = new Subject();
 
 	emitFromService(eventName: string, payload: any) {	
@@ -16,5 +21,3 @@ class EventService {
 		});
 	}   
 }
-
-export default new EventService();
