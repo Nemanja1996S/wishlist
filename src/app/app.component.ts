@@ -21,7 +21,8 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  items! : wishItem[];
+  
+  items : wishItem[] = [];
 
   constructor(events : EventService, private wishService : WishService){
     events.listenFromService('removeWishEvent', (wish : wishItem) => {
@@ -33,9 +34,13 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.wishService.getWishes().subscribe((data : any)  => {
+    this.wishService.getWishes().subscribe(
+      (data : any)  => {
       this.items = data;
-      console.log(data)
+      //console.log(data)
+    },
+    (error : any) => {
+        alert(error.message);
     })
   }
 
