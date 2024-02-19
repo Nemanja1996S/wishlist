@@ -1,0 +1,15 @@
+<form class="form-container" [formGroup]="contactGroup" (ngSubmit)="$event.preventDefault(); submitForm()">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" formControlName="nameFormControl">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email address</label>
+    <input type="email" class="form-control" placeholder="name@example.com" formControlName="emailFormControl">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea class="form-control" rows="3" formControlName="messageFormControl"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit" >Send message</button>
+</form>
