@@ -2,14 +2,41 @@
   <div class="mb-3">
     <label class="form-label">Name</label>
     <input type="text" class="form-control" formControlName="nameFormControl">
+    <div *ngIf="contactGroup.get('nameFormControl')?.invalid && 
+    (contactGroup.get('nameFormControl')?.dirty || contactGroup.get('nameFormControl')?.touched)">
+        <small class="text-danger" *ngIf="contactGroup.get('nameFormControl')?.hasError('required')">
+        Name is required
+        </small>
+    </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Email address</label>
     <input type="email" class="form-control" placeholder="name@example.com" formControlName="emailFormControl">
+    <div *ngIf="contactGroup.get('emailFormControl')?.invalid && 
+    (contactGroup.get('emailFormControl')?.dirty || contactGroup.get('emailFormControl')?.touched)">
+        <small class="text-danger" *ngIf="contactGroup.get('emailFormControl')?.hasError('required')">
+        Email is required
+        </small>
+        <small class="text-danger" *ngIf="contactGroup.get('emailFormControl')?.hasError('email')">
+            Email address is not valid
+        </small>
+        <small class="text-danger" *ngIf="contactGroup.get('emailFormControl')?.hasError('invalidEmailDomain')">
+            Invalid email domain
+        </small>
+    </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Message</label>
     <textarea class="form-control" rows="3" formControlName="messageFormControl"></textarea>
   </div>
-  <button class="btn btn-primary" type="submit" >Send message</button>
+  <div *ngIf="contactGroup.get('messageFormControl')?.invalid && 
+    (contactGroup.get('messageFormControl')?.dirty || contactGroup.get('messageFormControl')?.touched)">
+        <small class="text-danger" *ngIf="contactGroup.get('messageFormControl')?.hasError('required')">
+        Message is required
+        </small>
+        <small class="text-danger" *ngIf="contactGroup.get('messageFormControl')?.hasError('minlength')">
+        Message needs to be over 10 length
+        </small>
+    </div>
+  <button class="btn btn-primary" type="submit" [disabled]="contactGroup.invalid">Send message</button>
 </form>
