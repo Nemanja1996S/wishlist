@@ -1,4 +1,25 @@
-<div>App component stil shows</div>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" (click)="$event.preventDefault(); goToHome()" >Home</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="#" (click)="$event.preventDefault(); goToProducts()">Products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" (click)="$event.preventDefault(); goToContact()">Contact us</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<!-- <div class="toolbar" role="banner">
+    <a routerLink="">Home</a>
+    <a routerLink="contact">Contact us</a>
+</div> -->
 <div>
     <router-outlet></router-outlet>
 </div>
